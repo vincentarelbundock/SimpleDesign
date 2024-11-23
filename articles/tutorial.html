@@ -184,8 +184,9 @@ T       OLS 0.5859094</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
-<span>  <span class="va">results</span> <span class="op">=</span> <span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span>OLS <span class="op">=</span> <span class="va">model</span>, term <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span></span>
+<span>  <span class="va">results</span> <span class="op">=</span> <span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span></span>
+<span>    OLS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span>,</span>
+<span>    term <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span>
 <span><span class="op">}</span></span>
 <span></span>
@@ -288,8 +289,9 @@ T       OLS 0.5859094</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
-<span>  <span class="va">results</span> <span class="op">=</span> <span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span>OLS <span class="op">=</span> <span class="va">model</span>, term <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span></span>
+<span>  <span class="va">results</span> <span class="op">=</span> <span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span></span>
+<span>    OLS <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span>,</span>
+<span>    term <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span></span>
 <span>  <span class="kw"><a href="https://rdrr.io/r/base/function.html" class="external-link">return</a></span><span class="op">(</span><span class="va">results</span><span class="op">)</span></span>
 <span><span class="op">}</span></span></code></pre></div>
 </div>
@@ -328,7 +330,6 @@ T       OLS 0.5859094</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
-<span>  <span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
 <span>  <span class="va">results</span> <span class="op">=</span> <span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span></span>
 <span>    `Naive LM` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span>,</span>
 <span>    `Block controls` <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span> <span class="op">+</span> <span class="va">block</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span>,</span>
