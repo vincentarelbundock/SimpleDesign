@@ -89,7 +89,16 @@ diagnose(dgp, fit)
 
 The `fit()` function can also produce data frames with additional columns like `conf.low`, `conf.high`, and `p.values`. When those columns are present, `diagnose()` will generate more useful diagnostic statistics.
 
-Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, `SimpleDesign` supplies the `extract_estimates()` function. The mandatory `label` argument adds a new column with a unique label. The optional `term` argument specifies the subset of parameters to extract from the model.
+Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, `SimpleDesign` supplies the `extract_estimates()` function. The optional `term` argument specifies the subset of parameters to extract from the model.
+
+This function works on most model types, and can be used on them directly:
+
+```{r}
+mod = lm(mpg ~ hp, data = mtcars) 
+extract_estimates(OLS = mod)
+```
+
+We use this convenience function to clean-up the output of `fit()`:
 
 ```{r}
 fit = function(data) {
