@@ -201,14 +201,8 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./man/tidy_estimator_list.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">tidy_estimator_list</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/tidy_estimator.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">tidy_estimator</span></a>
+  <a href="./man/extract_estimates.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">extract_estimates</span></a>
   </div>
 </li>
       </ul>
@@ -306,18 +300,18 @@ T       OLS 0.5859094</code></pre>
 </div>
 </div>
 <p>The <code>fit()</code> function can also produce data frames with additional columns like <code>conf.low</code>, <code>conf.high</code>, and <code>p.values</code>. When those columns are present, <code>diagnose()</code> will generate more useful diagnostic statistics.</p>
-<p>Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, <code>SimpleDesign</code> supplies the <code>tidy_estimator()</code> function. The mandatory <code>label</code> argument adds a new column with a unique label. The optional <code>term</code> argument specifies the subset of parameters to extract from the model.</p>
+<p>Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, <code>SimpleDesign</code> supplies the <code>extract_estimates()</code> function. The mandatory <code>label</code> argument adds a new column with a unique label. The optional <code>term</code> argument specifies the subset of parameters to extract from the model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="cf">function</span>(data) {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tidy_estimator</span>(model, <span class="at">label =</span> <span class="st">"OLS"</span>, <span class="at">term =</span> <span class="st">"T"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">extract_estimates</span>(<span class="at">OLS =</span> model, <span class="at">term =</span> <span class="st">"T"</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dgp</span>() <span class="sc">|&gt;</span> <span class="fu">fit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  estimator term  estimate   p.value   conf.low conf.high
-2       OLS    T 0.5012431 0.1422529 -0.1682288  1.170715</code></pre>
+1       OLS    T 0.5012431 0.1422529 -0.1682288  1.170715</code></pre>
 </div>
 </div>
 <p>Since the <code>fit()</code> output now includes the <span class="math inline">\(p\)</span> value and confidence interval, <code>diagnose()</code> now reports more useful statistics.</p>
@@ -410,7 +404,7 @@ T       OLS 0.5859094</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="cf">function</span>(data) {</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tidy_estimator</span>(model, <span class="at">label =</span> <span class="st">"Naive LM"</span>, <span class="at">term =</span> <span class="st">"T"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">extract_estimates</span>(<span class="at">OLS =</span> model, <span class="at">term =</span> <span class="st">"T"</span>)</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -419,22 +413,24 @@ T       OLS 0.5859094</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose</span>(dgp, fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  estimator term truth      bias      rmse power coverage
-1  Naive LM    T     2 -0.386235 0.4063862     1     0.62</code></pre>
+1       OLS    T     2 -0.386235 0.4063862     1     0.62</code></pre>
 </div>
 </div>
 </section>
 <section id="comparing-estimators" class="level2">
 <h2 class="anchored" data-anchor-id="comparing-estimators">Comparing estimators</h2>
 <p>Perhaps we should switch estimators. As described on the <a href="https://declaredesign.org/blog/posts/biased-fixed-effects.html">DeclareDesign blog</a>, we could try to control for blocks fixed effects in the linear model, or estimate differences-in-means in each group and then average them. That last option is implemented by the <code>differences_in_means()</code> function from the <code>estimatr</code> package.</p>
-<p>Instead of using the <code>tidy_estimator()</code> helper function, we use <code>tidy_estimator_list()</code>. This function accepts a named list of models, and returns a simple data frame with appropriate labels. To illustrate, let’s simulate a single dataset, store three fitted models in a named list, and call <code>tidy_estimator_list()</code>. For fun, we also set the <span class="math inline">\(\alpha\)</span> level used to build confidence intervals to 0.01.</p>
+<p>Again, we use the <code>extract_estimates()</code> helper function, which accepts a named list of models, and returns a simple data frame with appropriate labels. To illustrate, let’s simulate a single dataset, store three fitted models in a named list, and call <code>extract_estimates()</code>. For fun, we also set the <span class="math inline">\(\alpha\)</span> level used to build confidence intervals to 0.01.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">dgp</span>()</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Naive LM"</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data),</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Block controls"</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T <span class="sc">+</span> block, <span class="at">data =</span> data),</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"DinM"</span> <span class="ot">=</span> estimatr<span class="sc">::</span><span class="fu">difference_in_means</span>(Y <span class="sc">~</span> T, <span class="at">blocks =</span> block, <span class="at">data =</span> data)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy_estimator_list</span>(results, <span class="at">term =</span> <span class="st">"T"</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">extract_estimates</span>(</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Naive LM</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data),</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Block controls</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T <span class="sc">+</span> block, <span class="at">data =</span> data),</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">DinM</span><span class="st">`</span> <span class="ot">=</span> estimatr<span class="sc">::</span><span class="fu">difference_in_means</span>(Y <span class="sc">~</span> T, <span class="at">blocks =</span> block, <span class="at">data =</span> data),</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">term =</span> <span class="st">"T"</span>,</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="fl">0.01</span></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       estimator term estimate      p.value conf.low conf.high
 1       Naive LM    T 1.688476 2.062754e-16 1.159268  2.217683
@@ -446,15 +442,16 @@ T       OLS 0.5859094</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="cf">function</span>(data) {</span>
 <span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">list</span>(</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Naive LM"</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data),</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Block controls"</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T <span class="sc">+</span> block, <span class="at">data =</span> data),</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DinM"</span> <span class="ot">=</span> estimatr<span class="sc">::</span><span class="fu">difference_in_means</span>(Y <span class="sc">~</span> T, <span class="at">blocks =</span> block, <span class="at">data =</span> data)</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tidy_estimator_list</span>(results, <span class="at">term =</span> <span class="st">"T"</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>)</span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose</span>(dgp, fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">extract_estimates</span>(</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Naive LM</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Block controls</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T <span class="sc">+</span> block, <span class="at">data =</span> data),</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">DinM</span><span class="st">`</span> <span class="ot">=</span> estimatr<span class="sc">::</span><span class="fu">difference_in_means</span>(Y <span class="sc">~</span> T, <span class="at">blocks =</span> block, <span class="at">data =</span> data),</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">term =</span> <span class="st">"T"</span>,</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.01</span></span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose</span>(dgp, fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       estimator term truth         bias      rmse power coverage
 1 Block controls    T     2  0.579808242 0.5948968     1     0.10
