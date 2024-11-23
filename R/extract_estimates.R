@@ -76,6 +76,13 @@ extract_estimates = function(...,
         alpha = alpha,
         null = null,
         term = term)
+    } else {
+      if (!"estimator" %in% colnames(out[[n]])) {
+        out[[n]]$estimator = n
+      }
+      if (!"estimate" %in% colnames(out[[n]])) {
+        stop("Data frames must have an `estimate` column.", call. = FALSE)
+      }
     }
   }
   out = data.table::rbindlist(out, fill = TRUE)
