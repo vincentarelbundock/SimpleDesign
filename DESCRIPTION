@@ -11,7 +11,10 @@ Description: DeclareDesign for Dummies Like Me
 License: GPL (>= 2)
 Suggests: 
     altdoc,
-    tinytest
+    tinytest,
+    fabricatr,
+    randomizr,
+    estimatr
 Imports:
   checkmate,
   data.table,
