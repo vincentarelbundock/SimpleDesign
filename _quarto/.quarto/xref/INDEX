@@ -1,0 +1,23 @@
+{
+  "man/tidy_estimator.qmd": {
+    "tidy_estimator.html": "381a0a1e"
+  },
+  "man/tidy_estimator_list.qmd": {
+    "tidy_estimator_list.html": "406e1307"
+  },
+  "man/diagnose.qmd": {
+    "diagnose.html": "9393141f"
+  },
+  "index.md": {
+    "index.html": "acac5b04"
+  },
+  "CITATION.md": {
+    "CITATION.html": "891fafd2"
+  },
+  "vignettes/tutorial.qmd": {
+    "tutorial.html": "09857eba"
+  },
+  "man/extract_estimates.qmd": {
+    "extract_estimates.html": "de0fd0c8"
+  }
+}
