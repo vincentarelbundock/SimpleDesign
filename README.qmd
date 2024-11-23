@@ -3,6 +3,7 @@
 ```{r}
 #| include: false
 options(SimpleDesign_print_style = "tinytable")
+options(width = 150)
 set.seed(48103)
 ```
 
@@ -156,22 +157,6 @@ Finally, we diagnose the research design.
 ```{r}
 diagnose(dgp, fit)
 ```
-
-## Robust standard errors
-
-The confidence interval coverage seems very bad. Could it be because we used classical standard errors when we should have used robust standard errors? To check this possibility, we define a new `fit()` function with a different `vcov` argument in `tidy_estimator()`.
-
-```{r}
-fit = function(data) {
-  model = lm(Y ~ T, data = data)
-  results = tidy_estimator(model, label = "Naive LM", term = "T", vcov = "HC3")
-  return(results)
-}
-diagnose(dgp, fit)
-```
-
-Nope, the coverage is still awful.
-
 
 ## Comparing estimators
 
