@@ -9,6 +9,12 @@ options(width = 150)
 set.seed(48103)
 ```
 
+## Installation
+
+```r
+remotes::install_github("vincentarelbundock/SimpleDesign")
+```
+
 ## Simple data generating process
 
 First, we load the package and define a `dgp()` function that encodes a simple data generating process (DGP): A two-arm randomized controlled trial with $N=100$ observations, an outcome $Y$, a random treatment $T$, and a treatment effect of $\theta=0.5$. 
