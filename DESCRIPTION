@@ -1,12 +1,12 @@
 Package: SimpleDesign
 Type: Package
 Title: DeclareDesign for Dummies Like Me
-Version: 1.0
+Version: 0.0.1
 Date: 2024-11-23
 Authors@R: person("Vincent", "Arel-Bundock", role = c("aut",
        "cre"), email = "vincent.arel-bundock@umontreal.ca")
-URL: https://github.com/vincentarelbundock/marginaleffects
-BugReports: https://github.com/vincentarelbundock/marginaleffects/issues
+URL: https://vincentarelbundock.github.io/simpledesign
+BugReports: https://github.com/vincentarelbundock/simpledesign/issues/
 Description: DeclareDesign for Dummies Like Me
 License: GPL (>= 2)
 Suggests: 
