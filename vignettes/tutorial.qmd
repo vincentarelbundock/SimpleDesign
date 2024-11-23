@@ -61,6 +61,10 @@ dgp = function(theta = 0.5, N = 50) {
 dgp() |> head()
 ```
 
+::: {.callout-important}
+Adding the `truth` attribute to the data frame is essential for diagnosis. This attribute must be a numeric vector of length 1 or of length equal to the number of estimates returned by the `fit()` function defined below.
+:::
+
 Next, we define a `fit()` function. This function accepts a data frame, fits a model, and returns a data frame of estimates. That data frame must absolutely include an `estimate` column with numeric values. 
 
 ```{r}
