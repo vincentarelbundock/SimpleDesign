@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.6.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>SimpleDesign</title>
+<title>tutorial</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -57,49 +57,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
-<script id="quarto-search-options" type="application/json">{
-  "location": "navbar",
-  "copy-button": false,
-  "collapse-after": 3,
-  "panel-placement": "end",
-  "type": "overlay",
-  "limit": 50,
-  "keyboard-shortcut": [
-    "f",
-    "/",
-    "s"
-  ],
-  "show-item-context": false,
-  "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
-    "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
-  }
-}</script>
+<script src="tutorial_files/libs/clipboard/clipboard.min.js"></script>
+<script src="tutorial_files/libs/quarto-html/quarto.js"></script>
+<script src="tutorial_files/libs/quarto-html/popper.min.js"></script>
+<script src="tutorial_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="tutorial_files/libs/quarto-html/anchor.min.js"></script>
+<link href="tutorial_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="tutorial_files/libs/quarto-html/quarto-syntax-highlighting-29e2c20b02301cfff04dc8050bf30c7e.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="tutorial_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="tutorial_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="tutorial_files/libs/bootstrap/bootstrap-e19dc0c07aeef78048e587c3f1edba7a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -133,116 +100,17 @@ window.Quarto = {
 
 </head>
 
-<body class="nav-sidebar floating nav-fixed">
+<body class="fullcontent">
 
-<div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
-      <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">SimpleDesign</span>
-    </a>
-  </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-  <span class="navbar-toggler-icon"></span>
-</button>
-          <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll ms-auto">
-  <li class="nav-item compact">
-    <a class="nav-link" href="https://github.com/vincentarelbundock/marginaleffects"> <i class="bi bi-github" role="img" aria-label="SimpleDesign GitHub">
-</i> 
-<span class="menu-text"></span></a>
-  </li>  
-</ul>
-          </div> <!-- /navcollapse -->
-            <div class="quarto-navbar-tools">
-</div>
-      </div> <!-- /container-fluid -->
-    </nav>
-  <nav class="quarto-secondary-nav">
-    <div class="container-fluid d-flex">
-      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
-        <i class="bi bi-layout-text-sidebar-reverse"></i>
-      </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"></ol></nav>
-        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
-        </a>
-    </div>
-  </nav>
-</header>
-<!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
-<!-- sidebar -->
-  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
-    <div class="sidebar-menu-container"> 
-    <ul class="list-unstyled mt-1">
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./index.md" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Home</span></a>
-  </div>
-</li>
-        <li class="sidebar-item sidebar-item-section">
-      <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false">
- <span class="menu-text">Reference</span></a>
-          <a class="sidebar-item-toggle text-start collapsed" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="false" aria-label="Toggle section">
-            <i class="bi bi-chevron-right ms-2"></i>
-          </a> 
-      </div>
-      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 ">  
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/diagnose.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">diagnose</span></a>
-  </div>
-</li>
-          <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./man/extract_estimates.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">extract_estimates</span></a>
-  </div>
-</li>
-      </ul>
-  </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./CITATION.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Citation</span></a>
-  </div>
-</li>
-    </ul>
-    </div>
-</nav>
-<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
-<!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <div class="quarto-code-links"><h2>Code Links</h2><ul><li><a href="undefined"><i class="bi bi-link-45deg"></i></a></li></ul></div></div>
-<!-- main -->
-<main class="content" id="quarto-document-content">
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
 
 
 
 
-<section id="simpledesign" class="level1">
-<h1><code>SimpleDesign</code></h1>
-<p>A simple package to simulate and diagnose research designs:</p>
-<ul>
-<li>Simulate</li>
-<li>Fit</li>
-<li>Diagnose
-<ul>
-<li>Bias</li>
-<li>RMSE</li>
-<li>Power</li>
-<li>Coverage</li>
-</ul></li>
-</ul>
-<p>This is strongly influenced by the amazing <code>DeclareDesign</code> package.</p>
-<p>Warning: This was just a quick Saturday morning project to see if I could roll my own simple solution. Nobody should use this for serious work.</p>
+<section id="simpledesign-tutorial" class="level1">
+<h1><code>SimpleDesign</code> tutorial</h1>
 <section id="simple-data-generating-process" class="level2">
 <h2 class="anchored" data-anchor-id="simple-data-generating-process">Simple data generating process</h2>
 <p>First, we load the package and define a <code>dgp()</code> function that encodes a simple data generating process (DGP): A two-arm randomized controlled trial with <span class="math inline">\(N=100\)</span> observations, an outcome <span class="math inline">\(Y\)</span>, a random treatment <span class="math inline">\(T\)</span>, and a treatment effect of <span class="math inline">\(\theta=0.5\)</span>.</p>
@@ -300,18 +168,18 @@ T       OLS 0.5859094</code></pre>
 </div>
 </div>
 <p>The <code>fit()</code> function can also produce data frames with additional columns like <code>conf.low</code>, <code>conf.high</code>, and <code>p.values</code>. When those columns are present, <code>diagnose()</code> will generate more useful diagnostic statistics.</p>
-<p>Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, <code>SimpleDesign</code> supplies the <code>extract_estimates()</code> function. The mandatory <code>label</code> argument adds a new column with a unique label. The optional <code>term</code> argument specifies the subset of parameters to extract from the model.</p>
+<p>Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, <code>SimpleDesign</code> supplies the <code>tidy_estimator()</code> function. The mandatory <code>label</code> argument adds a new column with a unique label. The optional <code>term</code> argument specifies the subset of parameters to extract from the model.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="cf">function</span>(data) {</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data)</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">extract_estimates</span>(<span class="at">OLS =</span> model, <span class="at">term =</span> <span class="st">"T"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tidy_estimator</span>(model, <span class="at">label =</span> <span class="st">"OLS"</span>, <span class="at">term =</span> <span class="st">"T"</span>)</span>
 <span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
 <span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="fu">dgp</span>() <span class="sc">|&gt;</span> <span class="fu">fit</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  estimator term  estimate   p.value   conf.low conf.high
-1       OLS    T 0.5012431 0.1422529 -0.1682288  1.170715</code></pre>
+2       OLS    T 0.5012431 0.1422529 -0.1682288  1.170715</code></pre>
 </div>
 </div>
 <p>Since the <code>fit()</code> output now includes the <span class="math inline">\(p\)</span> value and confidence interval, <code>diagnose()</code> now reports more useful statistics.</p>
@@ -404,7 +272,7 @@ T       OLS 0.5859094</code></pre>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="cf">function</span>(data) {</span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data)</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">extract_estimates</span>(<span class="at">OLS =</span> model, <span class="at">term =</span> <span class="st">"T"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tidy_estimator</span>(model, <span class="at">label =</span> <span class="st">"Naive LM"</span>, <span class="at">term =</span> <span class="st">"T"</span>)</span>
 <span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
@@ -413,79 +281,92 @@ T       OLS 0.5859094</code></pre>
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose</span>(dgp, fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  estimator term truth      bias      rmse power coverage
-1       OLS    T     2 -0.386235 0.4063862     1     0.62</code></pre>
+1  Naive LM    T     2 -0.386235 0.4063862     1     0.62</code></pre>
 </div>
 </div>
+</section>
+<section id="robust-standard-errors" class="level2">
+<h2 class="anchored" data-anchor-id="robust-standard-errors">Robust standard errors</h2>
+<p>The confidence interval coverage seems very bad. Could it be because we used classical standard errors when we should have used robust standard errors? To check this possibility, we define a new <code>fit()</code> function with a different <code>vcov</code> argument in <code>tidy_estimator()</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="cf">function</span>(data) {</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tidy_estimator</span>(model, <span class="at">label =</span> <span class="st">"Naive LM"</span>, <span class="at">term =</span> <span class="st">"T"</span>, <span class="at">vcov =</span> <span class="st">"HC3"</span>)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose</span>(dgp, fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  estimator term truth       bias      rmse power coverage
+1  Naive LM    T     2 -0.3949174 0.4138856     1      0.3</code></pre>
+</div>
+</div>
+<p>Nope, the coverage is still awful.</p>
 </section>
 <section id="comparing-estimators" class="level2">
 <h2 class="anchored" data-anchor-id="comparing-estimators">Comparing estimators</h2>
 <p>Perhaps we should switch estimators. As described on the <a href="https://declaredesign.org/blog/posts/biased-fixed-effects.html">DeclareDesign blog</a>, we could try to control for blocks fixed effects in the linear model, or estimate differences-in-means in each group and then average them. That last option is implemented by the <code>differences_in_means()</code> function from the <code>estimatr</code> package.</p>
-<p>Again, we use the <code>extract_estimates()</code> helper function, which accepts a named list of models, and returns a simple data frame with appropriate labels. To illustrate, let’s simulate a single dataset, store three fitted models in a named list, and call <code>extract_estimates()</code>. For fun, we also set the <span class="math inline">\(\alpha\)</span> level used to build confidence intervals to 0.01.</p>
+<p>Instead of using the <code>tidy_estimator()</code> helper function, we use <code>tidy_estimator_list()</code>. This function accepts a named list of models, and returns a simple data frame with appropriate labels. To illustrate, let’s simulate a single dataset, store three fitted models in a named list, and call <code>tidy_estimator_list()</code>. For fun, we also set the <span class="math inline">\(\alpha\)</span> level used to build confidence intervals to 0.01.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">dgp</span>()</span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">extract_estimates</span>(</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Naive LM</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data),</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">Block controls</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T <span class="sc">+</span> block, <span class="at">data =</span> data),</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">`</span><span class="at">DinM</span><span class="st">`</span> <span class="ot">=</span> estimatr<span class="sc">::</span><span class="fu">difference_in_means</span>(Y <span class="sc">~</span> T, <span class="at">blocks =</span> block, <span class="at">data =</span> data),</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">term =</span> <span class="st">"T"</span>,</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">alpha =</span> <span class="fl">0.01</span></span>
-<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>data <span class="ot">=</span> <span class="fu">dgp</span>()</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>results <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Naive LM"</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data),</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"Block controls"</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T <span class="sc">+</span> block, <span class="at">data =</span> data),</span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"DinM"</span> <span class="ot">=</span> estimatr<span class="sc">::</span><span class="fu">difference_in_means</span>(Y <span class="sc">~</span> T, <span class="at">blocks =</span> block, <span class="at">data =</span> data)</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy_estimator_list</span>(results, <span class="at">term =</span> <span class="st">"T"</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>       estimator term estimate      p.value conf.low conf.high
-1       Naive LM    T 1.688476 2.062754e-16 1.159268  2.217683
-2 Block controls    T 2.628537 1.708860e-63 2.226028  3.031047
-3           DinM    T 2.071378 9.103336e-57 1.735331  2.407425</code></pre>
+1       Naive LM    T 1.545227 8.525041e-14 1.011822  2.078631
+2 Block controls    T 2.483890 1.048603e-55 2.076971  2.890809
+3           DinM    T 1.939833 4.032607e-38 1.552748  2.326919</code></pre>
 </div>
 </div>
 <p>Using this helper function, we can define a new <code>fit()</code> and compare different modelling strategies:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="cf">function</span>(data) {</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data)</span>
-<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">extract_estimates</span>(</span>
-<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Naive LM</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data),</span>
-<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">Block controls</span><span class="st">`</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T <span class="sc">+</span> block, <span class="at">data =</span> data),</span>
-<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">`</span><span class="at">DinM</span><span class="st">`</span> <span class="ot">=</span> estimatr<span class="sc">::</span><span class="fu">difference_in_means</span>(Y <span class="sc">~</span> T, <span class="at">blocks =</span> block, <span class="at">data =</span> data),</span>
-<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">term =</span> <span class="st">"T"</span>,</span>
-<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">alpha =</span> <span class="fl">0.01</span></span>
-<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
-<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose</span>(dgp, fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">=</span> <span class="cf">function</span>(data) {</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  model <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data)</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">list</span>(</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Naive LM"</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T, <span class="at">data =</span> data),</span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"Block controls"</span> <span class="ot">=</span> <span class="fu">lm</span>(Y <span class="sc">~</span> T <span class="sc">+</span> block, <span class="at">data =</span> data),</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"DinM"</span> <span class="ot">=</span> estimatr<span class="sc">::</span><span class="fu">difference_in_means</span>(Y <span class="sc">~</span> T, <span class="at">blocks =</span> block, <span class="at">data =</span> data)</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  results <span class="ot">=</span> <span class="fu">tidy_estimator_list</span>(results, <span class="at">term =</span> <span class="st">"T"</span>, <span class="at">alpha =</span> <span class="fl">0.01</span>)</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">return</span>(results)</span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose</span>(dgp, fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>       estimator term truth         bias      rmse power coverage
-1 Block controls    T     2  0.579808242 0.5948968     1     0.10
-2           DinM    T     2 -0.006437012 0.1472254     1     0.99
-3       Naive LM    T     2 -0.383467860 0.4036736     1     0.88</code></pre>
+<pre><code>       estimator term truth        bias      rmse power coverage
+1 Block controls    T     2  0.57373725 0.5867522     1     0.12
+2           DinM    T     2 -0.00969105 0.1348343     1     1.00
+3       Naive LM    T     2 -0.39144633 0.4080077     1     0.90</code></pre>
 </div>
 </div>
 <p>These results show that the difference-in-means strategy yields unbiased results with adequate coverage. We could extend our investigation to consider different DGP parameters:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>param <span class="ot">=</span> <span class="fu">expand.grid</span>(<span class="at">n_indiv =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">500</span>), <span class="at">e_sd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose</span>(dgp, fit, <span class="at">dgp_parameters =</span> param)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-overflow-scroll code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>param <span class="ot">=</span> <span class="fu">expand.grid</span>(<span class="at">n_indiv =</span> <span class="fu">c</span>(<span class="dv">100</span>, <span class="dv">500</span>), <span class="at">e_sd =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">diagnose</span>(dgp, fit, <span class="at">dgp_parameters =</span> param)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>        estimator term truth n_indiv e_sd          bias       rmse power coverage
-1  Block controls    T     2     100    1  0.5900080579 0.60494390     1     0.07
-2  Block controls    T     2     100    2  0.5514600278 0.60759485     1     0.78
-3  Block controls    T     2     500    1  0.5740810393 0.57671783     1     0.00
-4  Block controls    T     2     500    2  0.5848918067 0.59858053     1     0.00
-5            DinM    T     2     100    1  0.0009265808 0.13423367     1     1.00
-6            DinM    T     2     100    2 -0.0136474020 0.31326195     1     0.98
-7            DinM    T     2     500    1 -0.0140148171 0.06272271     1     1.00
-8            DinM    T     2     500    2 -0.0028456426 0.13729211     1     0.99
-9        Naive LM    T     2     100    1 -0.3788130041 0.39582041     1     0.94
-10       Naive LM    T     2     100    2 -0.4028174998 0.46559315     1     0.94
-11       Naive LM    T     2     500    1 -0.3872243800 0.39076056     1     0.01
-12       Naive LM    T     2     500    2 -0.3759156865 0.39481790     1     0.39</code></pre>
+<pre><code>        estimator term truth n_indiv e_sd         bias       rmse power coverage
+1  Block controls    T     2     100    1  0.610320541 0.62668619     1     0.07
+2  Block controls    T     2     100    2  0.622662622 0.67814423     1     0.65
+3  Block controls    T     2     500    1  0.573770754 0.57712867     1     0.00
+4  Block controls    T     2     500    2  0.605580676 0.61889228     1     0.02
+5            DinM    T     2     100    1  0.022966149 0.15867185     1     0.99
+6            DinM    T     2     100    2  0.037620062 0.29034670     1     0.98
+7            DinM    T     2     500    1 -0.005377531 0.07153573     1     0.98
+8            DinM    T     2     500    2  0.021910332 0.14036368     1     0.97
+9        Naive LM    T     2     100    1 -0.363424865 0.38553073     1     0.95
+10       Naive LM    T     2     100    2 -0.348514140 0.43758231     1     0.95
+11       Naive LM    T     2     500    1 -0.389353547 0.39355522     1     0.00
+12       Naive LM    T     2     500    2 -0.367407353 0.38722720     1     0.48</code></pre>
 </div>
 </div>
-
-
 </section>
 </section>
 
-</main> <!-- /main -->
+</main>
+<!-- /main column -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -568,8 +449,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   });
   clipboard.on('success', onCopySuccess);
   if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
     const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
       text: getTextToCopy,
       container: window.document.getElementById('quarto-embedded-source-code-modal')
@@ -680,7 +559,6 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       if (window.Quarto?.typesetMath) {
         window.Quarto.typesetMath(note);
       }
-      // TODO in 1.5, we should make sure this works without a callout special case
       if (note.classList.contains("callout")) {
         return note.outerHTML;
       } else {

@@ -1,0 +1,80 @@
+## Tidy Results from a List of Estimators {.unnumbered}
+
+
+### Description
+
+This function applies extracts a &quot;tidy&quot; output from a fitted model, or from a named list of fitted models.
+The information is extracted using the 'hyotheses()' function from the 'marginaleffects' package.
+
+
+
+### Usage
+
+<pre><code class='language-R'>extract_estimates(..., vcov = NULL, alpha = 0.05, null = 0, term = NULL)
+</code></pre>
+
+
+### Arguments
+
+<table>
+<tr><td style = "white-space: nowrap; font-family: monospace; vertical-align: top"><code id="...">...</code></td>
+<td>
+A named list of fitted model objects. Each model is passed to 'marginaleffects::hypotheses()'.
+</td></tr>
+<tr><td style = "white-space: nowrap; font-family: monospace; vertical-align: top"><code id="vcov">vcov</code></td>
+<td>
+An optional variance-covariance matrix or a function to compute it. Passed to 'extract_estimates'.
+</td></tr>
+<tr><td style = "white-space: nowrap; font-family: monospace; vertical-align: top"><code id="alpha">alpha</code></td>
+<td>
+A numeric value between 0 and 1 specifying the significance level for confidence intervals (default is 0.05).
+</td></tr>
+<tr><td style = "white-space: nowrap; font-family: monospace; vertical-align: top"><code id="null">null</code></td>
+<td>
+A numeric value representing the null hypothesis for the parameter estimates (default is 0).
+</td></tr>
+<tr><td style = "white-space: nowrap; font-family: monospace; vertical-align: top"><code id="term">term</code></td>
+<td>
+An optional character vector of terms to filter the output. If specified, only rows with matching terms are returned.
+</td></tr>
+</table>
+
+
+### Value
+
+A data frame combining the tidied results from all models in the list.
+Columns include:
+
+
+<dl>
+<dt>estimator</dt><dd>The label for the estimator (corresponding to the list names).
+</dd>
+<dt>term</dt><dd>The name of the parameter (e.g., model term).
+</dd>
+<dt>estimate</dt><dd>The estimated value of the parameter.
+</dd>
+<dt>p.value</dt><dd>The p-value for the hypothesis test of the parameter.
+</dd>
+<dt>conf.low</dt><dd>The lower bound of the confidence interval.
+</dd>
+<dt>conf.high</dt><dd>The upper bound of the confidence interval.
+</dd>
+</dl>
+
+
+
+### Examples
+```{r, warning=FALSE, message=FALSE, eval=TRUE}
+library("SimpleDesign")
+
+library(SimpleDesign)
+extract_estimates(
+  `I` = lm(mpg ~ wt, data = mtcars),
+  `II` = lm(mpg ~ wt + disp, data = mtcars),
+  alpha = 0.01,
+  term = "wt"
+)
+
+
+
+```
