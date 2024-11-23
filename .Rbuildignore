@@ -2,3 +2,6 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.github$
+^docs$
+^altdoc$
+^_quarto$

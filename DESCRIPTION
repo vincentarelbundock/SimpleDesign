@@ -5,9 +5,13 @@ Version: 1.0
 Date: 2024-11-23
 Authors@R: person("Vincent", "Arel-Bundock", role = c("aut",
        "cre"), email = "vincent.arel-bundock@umontreal.ca")
+URL: https://github.com/vincentarelbundock/marginaleffects
+BugReports: https://github.com/vincentarelbundock/marginaleffects/issues
 Description: DeclareDesign for Dummies Like Me
 License: GPL (>= 2)
-Suggests: tinytest
+Suggests: 
+    altdoc,
+    tinytest
 Imports:
   checkmate,
   data.table,
