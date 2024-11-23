@@ -168,9 +168,21 @@ T       OLS 0.5859094</code></pre>
 </div>
 </div>
 <p>The <code>fit()</code> function can also produce data frames with additional columns like <code>conf.low</code>, <code>conf.high</code>, and <code>p.values</code>. When those columns are present, <code><a href="../reference/diagnose.html">diagnose()</a></code> will generate more useful diagnostic statistics.</p>
-<p>Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, <code>SimpleDesign</code> supplies the <code><a href="../reference/extract_estimates.html">extract_estimates()</a></code> function. The mandatory <code>label</code> argument adds a new column with a unique label. The optional <code>term</code> argument specifies the subset of parameters to extract from the model.</p>
+<p>Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, <code>SimpleDesign</code> supplies the <code><a href="../reference/extract_estimates.html">extract_estimates()</a></code> function. The optional <code>term</code> argument specifies the subset of parameters to extract from the model.</p>
+<p>This function works on most model types, and can be used on them directly:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">mod</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">mpg</span> <span class="op">~</span> <span class="va">hp</span>, data <span class="op">=</span> <span class="va">mtcars</span><span class="op">)</span> </span>
+<span><span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span>OLS <span class="op">=</span> <span class="va">mod</span><span class="op">)</span></span></code></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  estimator        term    estimate      p.value    conf.low   conf.high
+1       OLS (Intercept) 30.09886054 8.873633e-76 26.89643433 33.30128675
+2       OLS          hp -0.06822828 1.558038e-11 -0.08806175 -0.04839481</code></pre>
+</div>
+</div>
+<p>We use this convenience function to clean-up the output of <code>fit()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
 <span>  <span class="va">results</span> <span class="op">=</span> <span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span>OLS <span class="op">=</span> <span class="va">model</span>, term <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span></span>
@@ -185,7 +197,7 @@ T       OLS 0.5859094</code></pre>
 </div>
 <p>Since the <code>fit()</code> output now includes the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math> value and confidence interval, <code><a href="../reference/diagnose.html">diagnose()</a></code> now reports more useful statistics.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/diagnose.html">diagnose</a></span><span class="op">(</span><span class="va">dgp</span>, <span class="va">fit</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  estimator term truth         bias      rmse power coverage
@@ -196,7 +208,7 @@ T       OLS 0.5859094</code></pre>
 </h3>
 <p>The <code>dgp()</code> function has two arguments to control the sample and effect sizes. We can diagnose several research designs in one go by supplying a data frame of DGP parameters to the <code>dgp_parameters</code> argument of <code><a href="../reference/diagnose.html">diagnose()</a></code>. In this example, we use the <code><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid()</a></code> function from base <code>R</code> to build a data frame with all combinations of parameter values.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">param</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span>N <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">500</span><span class="op">)</span>, theta <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.1</span>, <span class="fl">0.5</span>, <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">param</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
@@ -208,7 +220,7 @@ T       OLS 0.5859094</code></pre>
 5 100   1.0
 6 500   1.0</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/diagnose.html">diagnose</a></span><span class="op">(</span><span class="va">dgp</span>, <span class="va">fit</span>, N <span class="op">=</span> <span class="fl">100</span>, dgp_parameters <span class="op">=</span> <span class="va">param</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  estimator term truth   N theta         bias       rmse power coverage
@@ -224,7 +236,7 @@ T       OLS 0.5859094</code></pre>
 </h3>
 <p>Since <code>dgp()</code> is just a standard <code>R</code> function, users are free to define complex data generating processes using whatever helper functions they wish. For example, the <code>fabricatr</code> and <code>randomizr</code> packages offer extremely powerful functions to generate simulated data with special random assignment schemes. For example, this <code>dgp()</code> generates data from a block random assignment design.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb19"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">dgp</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">n_blocks</span> <span class="op">=</span> <span class="fl">3</span>, <span class="va">n_indiv</span> <span class="op">=</span> <span class="fl">100</span>, <span class="va">e_sd</span> <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">data</span> <span class="op">=</span> <span class="fu">fabricatr</span><span class="fu">::</span><span class="fu"><a href="https://declaredesign.org/r/fabricatr/reference/fabricate.html" class="external-link">fabricate</a></span><span class="op">(</span></span>
 <span>    <span class="co"># block-level variables</span></span>
@@ -266,7 +278,7 @@ T       OLS 0.5859094</code></pre>
 5     1   4   005  1.4483193  1.4483193 5.448319 0  1.4483193
 6     1   4   006  0.7895540  0.7895540 4.789554 1  4.7895540</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">dgp</span><span class="op">(</span><span class="op">)</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://rdrr.io/r/base/attr.html" class="external-link">attr</a></span><span class="op">(</span><span class="st">"truth"</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
@@ -274,7 +286,7 @@ T       OLS 0.5859094</code></pre>
 </div>
 <p>Now, we define a fit function to see if a “naive” linear regression model retrieves a good estimate of the estimand.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
 <span>  <span class="va">results</span> <span class="op">=</span> <span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span>OLS <span class="op">=</span> <span class="va">model</span>, term <span class="op">=</span> <span class="st">"T"</span><span class="op">)</span></span>
@@ -283,7 +295,7 @@ T       OLS 0.5859094</code></pre>
 </div>
 <p>Finally, we diagnose the research design.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/diagnose.html">diagnose</a></span><span class="op">(</span><span class="va">dgp</span>, <span class="va">fit</span><span class="op">)</span></span></code></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  estimator term truth      bias      rmse power coverage
@@ -295,7 +307,7 @@ T       OLS 0.5859094</code></pre>
 <p>Perhaps we should switch estimators. As described on the <a href="https://declaredesign.org/blog/posts/biased-fixed-effects.html" class="external-link">DeclareDesign blog</a>, we could try to control for blocks fixed effects in the linear model, or estimate differences-in-means in each group and then average them. That last option is implemented by the <code>differences_in_means()</code> function from the <code>estimatr</code> package.</p>
 <p>Again, we use the <code><a href="../reference/extract_estimates.html">extract_estimates()</a></code> helper function, which accepts a named list of models, and returns a simple data frame with appropriate labels. To illustrate, let’s simulate a single dataset, store three fitted models in a named list, and call <code><a href="../reference/extract_estimates.html">extract_estimates()</a></code>. For fun, we also set the <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math> level used to build confidence intervals to 0.01.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">data</span> <span class="op">=</span> <span class="fu">dgp</span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span></span>
@@ -314,7 +326,7 @@ T       OLS 0.5859094</code></pre>
 </div>
 <p>Using this helper function, we can define a new <code>fit()</code> and compare different modelling strategies:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">fit</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">data</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="va">model</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html" class="external-link">lm</a></span><span class="op">(</span><span class="va">Y</span> <span class="op">~</span> <span class="cn">T</span>, data <span class="op">=</span> <span class="va">data</span><span class="op">)</span></span>
 <span>  <span class="va">results</span> <span class="op">=</span> <span class="fu"><a href="../reference/extract_estimates.html">extract_estimates</a></span><span class="op">(</span></span>
@@ -336,7 +348,7 @@ T       OLS 0.5859094</code></pre>
 </div>
 <p>These results show that the difference-in-means strategy yields unbiased results with adequate coverage. We could extend our investigation to consider different DGP parameters:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="downlit sourceCode r">
+<div class="sourceCode cell-code" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">param</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/expand.grid.html" class="external-link">expand.grid</a></span><span class="op">(</span>n_indiv <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">500</span><span class="op">)</span>, e_sd <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">2</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="../reference/diagnose.html">diagnose</a></span><span class="op">(</span><span class="va">dgp</span>, <span class="va">fit</span>, dgp_parameters <span class="op">=</span> <span class="va">param</span><span class="op">)</span></span></code></pre></div>
