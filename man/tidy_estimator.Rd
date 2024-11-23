@@ -2,23 +2,14 @@
 % Please edit documentation in R/tidy_estimator.R
 \name{tidy_estimator}
 \alias{tidy_estimator}
-\title{Extract and Tidy Estimator Results}
+\title{Tidy Results from a List of Estimators}
 \usage{
-tidy_estimator(
-  model,
-  label = NULL,
-  vcov = NULL,
-  alpha = 0.05,
-  null = 0,
-  term = NULL
-)
+tidy_estimator(..., vcov = NULL, alpha = 0.05, null = 0, term = NULL)
 }
 \arguments{
-\item{model}{A fitted model object. This object is passed to the `marginaleffects::hypotheses` function.}
+\item{...}{A named list of fitted model objects. Each model is passed to `marginaleffects::hypotheses()`.}
 
-\item{label}{A character string specifying a label for the estimator. This label is added to the output as a column.}
-
-\item{vcov}{An optional variance-covariance matrix or a function to compute it. Passed to `marginaleffects::hypotheses`.}
+\item{vcov}{An optional variance-covariance matrix or a function to compute it. Passed to `tidy_estimator`.}
 
 \item{alpha}{A numeric value between 0 and 1 specifying the significance level for confidence intervals (default is 0.05).}
 
@@ -27,9 +18,10 @@ tidy_estimator(
 \item{term}{An optional character vector of terms to filter the output. If specified, only rows with matching terms are returned.}
 }
 \value{
-A data frame containing tidied results with columns:
+A data frame combining the tidied results from all models in the list.
+  Columns include:
 \describe{
-  \item{estimator}{The label for the estimator, as specified by the `label` parameter.}
+  \item{estimator}{The label for the estimator (corresponding to the list names).}
   \item{term}{The name of the parameter (e.g., model term).}
   \item{estimate}{The estimated value of the parameter.}
   \item{p.value}{The p-value for the hypothesis test of the parameter.}
@@ -38,13 +30,14 @@ A data frame containing tidied results with columns:
 }
 }
 \description{
-This function tidies the results from a statistical model, extracting key metrics
-such as the estimate, confidence intervals, and p-values. It also allows specifying
-a label for the estimator and filtering by terms.
+This function applies extracts a "tidy" output from a fitted model, or from a named list of fitted models.
+The information is extracted using the `hyotheses()` function from the `marginaleffects` package.
 }
 \examples{
 library(SimpleDesign)
-model <- lm(mpg ~ wt, data = mtcars)
-tidy_estimator(model, label = "OLS", alpha = 0.05, null = 0)
+model1 <- lm(mpg ~ wt, data = mtcars)
+model2 <- lm(mpg ~ disp, data = mtcars)
+models <- list(OLS_wt = model1, OLS_disp = model2)
+tidy_estimator_list(models, alpha = 0.05, null = 0)
 
 }

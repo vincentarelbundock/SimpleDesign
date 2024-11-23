@@ -2,5 +2,4 @@
 
 export(diagnose)
 export(tidy_estimator)
-export(tidy_estimator_list)
 import(data.table)

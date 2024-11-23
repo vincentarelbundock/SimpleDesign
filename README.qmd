@@ -75,7 +75,7 @@ Extracting that information from models is relatively easy, but it is inconvenie
 ```{r}
 fit = function(data) {
   model = lm(Y ~ T, data = data)
-  results = tidy_estimator(model, label = "OLS", term = "T")
+  results = tidy_estimator(OLS = model, term = "T")
   return(results)
 }
 
@@ -147,7 +147,7 @@ Now, we define a fit function to see if a "naive" linear regression model retrie
 ```{r}
 fit = function(data) {
   model = lm(Y ~ T, data = data)
-  results = tidy_estimator(model, label = "Naive LM", term = "T")
+  results = tidy_estimator(model, term = "T")
   return(results)
 }
 ```
@@ -162,16 +162,18 @@ diagnose(dgp, fit)
 
 Perhaps we should switch estimators. As described on the [DeclareDesign blog](https://declaredesign.org/blog/posts/biased-fixed-effects.html), we could try to control for blocks fixed effects in the linear model, or estimate differences-in-means in each group and then average them. That last option is implemented by the `differences_in_means()` function from the `estimatr` package.
 
-Instead of using the `tidy_estimator()` helper function, we use `tidy_estimator_list()`. This function accepts a named list of models, and returns a simple data frame with appropriate labels. To illustrate, let's simulate a single dataset, store three fitted models in a named list, and call `tidy_estimator_list()`. For fun, we also set the $\alpha$ level used to build confidence intervals to 0.01.
+Again, we use the `tidy_estimator()` helper function, which accepts a named list of models, and returns a simple data frame with appropriate labels. To illustrate, let's simulate a single dataset, store three fitted models in a named list, and call `tidy_estimator()`. For fun, we also set the $\alpha$ level used to build confidence intervals to 0.01.
 
 ```{r}
 data = dgp()
-results = list(
-  "Naive LM" = lm(Y ~ T, data = data),
-  "Block controls" = lm(Y ~ T + block, data = data),
-  "DinM" = estimatr::difference_in_means(Y ~ T, blocks = block, data = data)
+
+tidy_estimator(
+  `Naive LM` = lm(Y ~ T, data = data),
+  `Block controls` = lm(Y ~ T + block, data = data),
+  `DinM` = estimatr::difference_in_means(Y ~ T, blocks = block, data = data),
+  term = "T",
+  alpha = 0.01
 )
-tidy_estimator_list(results, term = "T", alpha = 0.01)
 ```
 
 Using this helper function, we can define a new `fit()` and compare different modelling strategies:
@@ -179,12 +181,13 @@ Using this helper function, we can define a new `fit()` and compare different mo
 ```{r}
 fit = function(data) {
   model = lm(Y ~ T, data = data)
-  results = list(
-    "Naive LM" = lm(Y ~ T, data = data),
-    "Block controls" = lm(Y ~ T + block, data = data),
-    "DinM" = estimatr::difference_in_means(Y ~ T, blocks = block, data = data)
+  results = tidy_estimator(
+    `Naive LM` = lm(Y ~ T, data = data),
+    `Block controls` = lm(Y ~ T + block, data = data),
+    `DinM` = estimatr::difference_in_means(Y ~ T, blocks = block, data = data),
+    term = "T",
+    alpha = 0.01
   )
-  results = tidy_estimator_list(results, term = "T", alpha = 0.01)
   return(results)
 }
 diagnose(dgp, fit)
