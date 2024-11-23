@@ -1,8 +1,9 @@
 pandoc: 3.2.1
 pkgdown: 2.1.0
 pkgdown_sha: ~
-articles: {}
-last_built: 2024-11-23T17:44Z
+articles:
+  tutorial: tutorial.html
+last_built: 2024-11-23T17:51Z
 urls:
   reference: https://vincentarelbundock.github.io/simpledesign/reference
   article: https://vincentarelbundock.github.io/simpledesign/articles

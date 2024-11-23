@@ -32,6 +32,12 @@
     <div id="navbar" class="collapse navbar-collapse ms-3">
       <ul class="navbar-nav me-auto">
 <li class="nav-item"><a class="nav-link" href="reference/index.html">Reference</a></li>
+<li class="nav-item dropdown">
+  <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
+<li><a class="dropdown-item" href="articles/tutorial.html">`SimpleDesign` tutorial</a></li>
+  </ul>
+</li>
       </ul>
 <ul class="navbar-nav">
 <li class="nav-item"><form class="form-inline" role="search">
@@ -70,7 +76,7 @@
 <p>First, we load the package and define a <code>dgp()</code> function that encodes a simple data generating process (DGP): A two-arm randomized controlled trial with <em>N</em> = 100 observations, an outcome <em>Y</em>, a random treatment <em>T</em>, and a treatment effect of <em>θ</em> = 0.5.</p>
 <p>The <code>dgp()</code> function must return a data frame when called. That data frame must also have a “truth” attribute, which holds the true value of the estimand that we are targetting.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/vincentarelbundock/marginaleffects" class="external-link">SimpleDesign</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://vincentarelbundock.github.io/simpledesign">SimpleDesign</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">dgp</span> <span class="op">=</span> <span class="kw">function</span><span class="op">(</span><span class="va">theta</span> <span class="op">=</span> <span class="fl">0.5</span>, <span class="va">N</span> <span class="op">=</span> <span class="fl">50</span><span class="op">)</span> <span class="op">{</span></span>
 <span>  <span class="cn">T</span> <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/Binomial.html" class="external-link">rbinom</a></span><span class="op">(</span><span class="va">N</span>, <span class="fl">1</span>, <span class="fl">.5</span><span class="op">)</span> <span class="co"># treatment</span></span>
