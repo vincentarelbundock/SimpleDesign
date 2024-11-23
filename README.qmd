@@ -21,4 +21,12 @@ This is strongly influenced by the amazing `DeclareDesign` package.
 
 Warning: This was just a quick Saturday morning project to see if I could roll my own simple solution. Nobody should use this for serious work.
 
-See the [`SimpleDesign tutorial for examples.`](https://vincentarelbundock.github.io/SimpleDesign/docs/articles/tutorial.html)
+### Installation
+
+```r
+remotes::install_github("vincentarelbundock/SimpleDesign")
+```
+
+### Usage
+
+See the [`SimpleDesign tutorial for examples.`](https://vincentarelbundock.github.io/SimpleDesign/articles/tutorial.html)
