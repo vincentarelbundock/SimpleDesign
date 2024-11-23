@@ -1,9 +1,9 @@
-tidy_estimator_one = function(model,
-                              label = NULL,
-                              vcov = NULL,
-                              alpha = 0.05,
-                              null = 0,
-                              term = NULL) {
+extract_estimates_one = function(model,
+                                 label = NULL,
+                                 vcov = NULL,
+                                 alpha = 0.05,
+                                 null = 0,
+                                 term = NULL) {
   checkmate::assert_string(label)
   checkmate::assert_number(alpha, lower = 0, upper = 1)
   checkmate::assert_number(null)
@@ -32,7 +32,7 @@ tidy_estimator_one = function(model,
 #' The information is extracted using the `hyotheses()` function from the `marginaleffects` package.
 #'
 #' @param ... A named list of fitted model objects. Each model is passed to `marginaleffects::hypotheses()`.
-#' @param vcov An optional variance-covariance matrix or a function to compute it. Passed to `tidy_estimator`.
+#' @param vcov An optional variance-covariance matrix or a function to compute it. Passed to `extract_estimates`.
 #' @param alpha A numeric value between 0 and 1 specifying the significance level for confidence intervals (default is 0.05).
 #' @param null A numeric value representing the null hypothesis for the parameter estimates (default is 0).
 #' @param term An optional character vector of terms to filter the output. If specified, only rows with matching terms are returned.
@@ -50,17 +50,19 @@ tidy_estimator_one = function(model,
 #'
 #' @examples
 #' library(SimpleDesign)
-#' model1 <- lm(mpg ~ wt, data = mtcars)
-#' model2 <- lm(mpg ~ disp, data = mtcars)
-#' models <- list(OLS_wt = model1, OLS_disp = model2)
-#' tidy_estimator_list(models, alpha = 0.05, null = 0)
+#' extract_estimates(
+#'   `I` = lm(mpg ~ wt, data = mtcars),
+#'   `II` = lm(mpg ~ wt + disp, data = mtcars),
+#'   alpha = 0.01,
+#'   term = "wt"
+#' )
 #'
 #' @export
-tidy_estimator = function(...,
-                          vcov = NULL,
-                          alpha = 0.05,
-                          null = 0,
-                          term = NULL) {
+extract_estimates = function(...,
+                             vcov = NULL,
+                             alpha = 0.05,
+                             null = 0,
+                             term = NULL) {
   models = list(...)
   if (is.null(names(models))) {
     names(models) = seq_along(models)
@@ -68,7 +70,7 @@ tidy_estimator = function(...,
   out = models
   for (n in names(out)) {
     if (!inherits(out[[n]], "data.frame")) {
-      out[[n]] = tidy_estimator_one(out[[n]],
+      out[[n]] = extract_estimates_one(out[[n]],
         label = n,
         vcov = vcov,
         alpha = alpha,

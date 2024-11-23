@@ -70,12 +70,12 @@ diagnose(dgp, fit)
 
 The `fit()` function can also produce data frames with additional columns like `conf.low`, `conf.high`, and `p.values`. When those columns are present, `diagnose()` will generate more useful diagnostic statistics.
 
-Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, `SimpleDesign` supplies the `tidy_estimator()` function. The mandatory `label` argument adds a new column with a unique label. The optional `term` argument specifies the subset of parameters to extract from the model.
+Extracting that information from models is relatively easy, but it is inconvenient. To make this process easier, `SimpleDesign` supplies the `extract_estimates()` function. The mandatory `label` argument adds a new column with a unique label. The optional `term` argument specifies the subset of parameters to extract from the model.
 
 ```{r}
 fit = function(data) {
   model = lm(Y ~ T, data = data)
-  results = tidy_estimator(OLS = model, term = "T")
+  results = extract_estimates(OLS = model, term = "T")
   return(results)
 }
 
@@ -147,7 +147,7 @@ Now, we define a fit function to see if a "naive" linear regression model retrie
 ```{r}
 fit = function(data) {
   model = lm(Y ~ T, data = data)
-  results = tidy_estimator(model, term = "T")
+  results = extract_estimates(OLS = model, term = "T")
   return(results)
 }
 ```
@@ -162,12 +162,12 @@ diagnose(dgp, fit)
 
 Perhaps we should switch estimators. As described on the [DeclareDesign blog](https://declaredesign.org/blog/posts/biased-fixed-effects.html), we could try to control for blocks fixed effects in the linear model, or estimate differences-in-means in each group and then average them. That last option is implemented by the `differences_in_means()` function from the `estimatr` package.
 
-Again, we use the `tidy_estimator()` helper function, which accepts a named list of models, and returns a simple data frame with appropriate labels. To illustrate, let's simulate a single dataset, store three fitted models in a named list, and call `tidy_estimator()`. For fun, we also set the $\alpha$ level used to build confidence intervals to 0.01.
+Again, we use the `extract_estimates()` helper function, which accepts a named list of models, and returns a simple data frame with appropriate labels. To illustrate, let's simulate a single dataset, store three fitted models in a named list, and call `extract_estimates()`. For fun, we also set the $\alpha$ level used to build confidence intervals to 0.01.
 
 ```{r}
 data = dgp()
 
-tidy_estimator(
+extract_estimates(
   `Naive LM` = lm(Y ~ T, data = data),
   `Block controls` = lm(Y ~ T + block, data = data),
   `DinM` = estimatr::difference_in_means(Y ~ T, blocks = block, data = data),
@@ -181,7 +181,7 @@ Using this helper function, we can define a new `fit()` and compare different mo
 ```{r}
 fit = function(data) {
   model = lm(Y ~ T, data = data)
-  results = tidy_estimator(
+  results = extract_estimates(
     `Naive LM` = lm(Y ~ T, data = data),
     `Block controls` = lm(Y ~ T + block, data = data),
     `DinM` = estimatr::difference_in_means(Y ~ T, blocks = block, data = data),
