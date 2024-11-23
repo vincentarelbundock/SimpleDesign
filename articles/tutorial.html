@@ -134,6 +134,12 @@
 6 -0.04156007 0</code></pre>
 </div>
 </div>
+<div>
+<blockquote>
+<p><strong>Important</strong></p>
+<p>Adding the <code>truth</code> attribute to the data frame is essential for diagnosis. This attribute must be a numeric vector of length 1 or of length equal to the number of estimates returned by the <code>fit()</code> function defined below.</p>
+</blockquote>
+</div>
 <p>Next, we define a <code>fit()</code> function. This function accepts a data frame, fits a model, and returns a data frame of estimates. That data frame must absolutely include an <code>estimate</code> column with numeric values.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb5"><pre class="downlit sourceCode r">
