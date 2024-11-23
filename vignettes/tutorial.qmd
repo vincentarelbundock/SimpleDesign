@@ -229,3 +229,54 @@ param = expand.grid(n_indiv = c(100, 500), e_sd = c(1, 2))
 
 diagnose(dgp, fit, dgp_parameters = param)
 ```
+
+
+## Regression adjustment
+
+```{r}
+library(marginaleffects)
+
+dgp = function(N = 100, theta = 0.5) {
+  # random treatment
+  T = rbinom(N, 1, .5)
+
+  # noise
+  epsilon = rnorm(N)
+
+  # coefficients of X1, X2, ...
+  beta = runif(5, -1, 1)
+
+  # X is multivariate normal
+  sigma = matrix(.5, ncol = 5, nrow = 5)
+  diag(sigma) = 1
+  mu = rep(1, 5)
+  X = MASS::mvrnorm(N, mu, sigma)
+
+  # outcome
+  Y = theta * T + X %*% beta + epsilon
+
+  data = data.frame(Y, T, X)
+
+  attr(data, "truth") = theta
+
+  return(data)
+}
+
+
+fit = function(data) {
+  unadjusted = lm(Y ~ T, data = data)
+  adjusted = lm(Y ~ T * (X1 + X2 + X3 + X4 + X5), data = data)
+  adjusted = avg_comparisons(adjusted, variables = "T")
+  adjusted = adjusted[, c("term", "estimate", "p.value", "conf.low", "conf.high")]
+  results = extract_estimates(
+    Unadjusted = unadjusted,
+    Adjusted = adjusted,
+    term = "T"
+  )
+  return(results)
+}
+
+diagnose(dgp, fit)
+```
+
+
