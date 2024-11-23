@@ -102,8 +102,9 @@ We use this convenience function to clean-up the output of `fit()`:
 
 ```{r}
 fit = function(data) {
-  model = lm(Y ~ T, data = data)
-  results = extract_estimates(OLS = model, term = "T")
+  results = extract_estimates(
+    OLS = lm(Y ~ T, data = data),
+    term = "T")
   return(results)
 }
 
@@ -174,8 +175,9 @@ Now, we define a fit function to see if a "naive" linear regression model retrie
 
 ```{r}
 fit = function(data) {
-  model = lm(Y ~ T, data = data)
-  results = extract_estimates(OLS = model, term = "T")
+  results = extract_estimates(
+    OLS = lm(Y ~ T, data = data),
+    term = "T")
   return(results)
 }
 ```
@@ -208,7 +210,6 @@ Using this helper function, we can define a new `fit()` and compare different mo
 
 ```{r}
 fit = function(data) {
-  model = lm(Y ~ T, data = data)
   results = extract_estimates(
     `Naive LM` = lm(Y ~ T, data = data),
     `Block controls` = lm(Y ~ T + block, data = data),
