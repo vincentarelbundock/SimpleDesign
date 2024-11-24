@@ -78,7 +78,7 @@ diagnose = function(dgp,
       out = c(out, list(f))
     } else {
       for (k in seq_len(nrow(dgp_parameters))) {
-        d = do.call(dgp, as.list(dgp_parameters[k, ]))
+        d = do.call(dgp, as.list(dgp_parameters[k, , drop = FALSE]))
         assert_dgp(d)
         f = fit(d)
         assert_fit(f)
